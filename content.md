@@ -468,6 +468,74 @@ count: false
 ---
 
 class: part-slide
+count: false
+
+# OCR mit Wikimedia
+
+---
+
+# OCR mit Wikimedia
+
+- einfaches Webinterface zur OCR von Wikimedia-Inhalten
+
+<center>
+<img src="img/wikimedia.png" height="300px" />
+</center>
+
+→ [ocr-test.wmcloud.org](https://ocr-test.wmcloud.org/)
+
+---
+
+# OCR mit Wikimedia
+
+Aufgabe
+- Suchen Sie sich ein [geeignetes Bild](https://upload.wikimedia.org/wikipedia/commons/0/0e/Weisse_Scherzhafte_Lieder_003.jpg) bei Wikimedia.Commons (Tipp: via Wikisource)!
+- Führen Sie eine OCR aus!
+- Kopieren Sie sich das Textresultat!
+- Führen Sie eine zweite OCR mit veränderten Parametern aus!
+- Kopieren Sie sich das Textresultat
+- Vergleichen Sie die Ergebnisse auf [diffchecker](https://www.diffchecker.com/)! Was fällt Ihnen alles auf?
+
+---
+
+# OCR mit Wikimedia
+
+<center>
+<img src="img/diff.png" height="400px" />
+</center>
+
+---
+
+class: part-slide
+count: false
+
+# OCR mit generativer KI
+
+---
+
+Paradigmenwechsel: Von der Sequenz zum Transformer
++ Sequenzielle Modellierung der horizontalen Achse
+  * Begrenztes „Receptive Field“
+  * Schwierigkeiten bei globalen Layout-Abhängigkeiten
++ **Vision Transformer** (ViT)
+  * Bild als Menge visueller Tokens
+  * wechselnde „Aufmerksamkeit“ (*Attention*) über die gesamte Seite
+  * implizites Verständnis komplexer Layouts **ohne explizite Segmentierung**
+
+---
+
+# ViT-Architektur I – Patch Embedding
+
+- Segmentierung der Bilder ohne Bezug zum Text
+  * Zerlegung des Bildes `\(x \in \mathbb{R}^{H \times W \times C}\)` in `\(N\)` quadratische Patches `\(x_p \in \mathbb{R}^{N \times (P^2 \cdot C)}\)`
+  * „Flachklopfen“ von Patches zu Vektoren: 14×14 Pixel Patch eines RGB-Bildes → Vektor der Dimension 14⋅14⋅3=588
+- Transformation des Vektors zu einem passenden Input für den Transformer
+  * semantische Filterung: nur relevante Merkmale aus dem Vektor
+  * „Relevanz“ als Ergebnis des Trainingsprozesses
+
+---
+
+class: part-slide
 
 # Many thanks for your attention!
 
