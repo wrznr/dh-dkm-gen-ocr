@@ -1,2 +1,2 @@
-# slide-template
-Template for [`remarkjs`](https://remarkjs.com/)-based slides deployed via GitHub Pages
+# dh-dkm-gen-ocr
+Folien für die Sitzung zu Texterkennung mit generativer KI im Seminar *Datenkompetenz für Digital Humanities
