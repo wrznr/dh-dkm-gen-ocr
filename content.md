@@ -54,6 +54,10 @@ count: false
 
 # Kurze Einführung OCR
 
+---
+
+# Kurze Einführung OCR
+
 .cols[
 .sixty[
 - Bilderfassung ≠ Texterfassung
@@ -513,6 +517,8 @@ count: false
 
 ---
 
+# OCR mit generativer KI
+
 Paradigmenwechsel: Von der Sequenz zum Transformer
 + Sequenzielle Modellierung der horizontalen Achse
   * Begrenztes „Receptive Field“
@@ -524,14 +530,30 @@ Paradigmenwechsel: Von der Sequenz zum Transformer
 
 ---
 
-# ViT-Architektur I – Patch Embedding
+# ViT-Architektur
 
 - Segmentierung der Bilder ohne Bezug zum Text
   * Zerlegung des Bildes `\(x \in \mathbb{R}^{H \times W \times C}\)` in `\(N\)` quadratische Patches `\(x_p \in \mathbb{R}^{N \times (P^2 \cdot C)}\)`
   * „Flachklopfen“ von Patches zu Vektoren: 14×14 Pixel Patch eines RGB-Bildes → Vektor der Dimension 14⋅14⋅3=588
 - Transformation des Vektors zu einem passenden Input für den Transformer
-  * semantische Filterung: nur relevante Merkmale aus dem Vektor
+  * semantische Filterung: nur relevante Merkmale (Kanten, Bögen, Texturen) aus dem Vektor
   * „Relevanz“ als Ergebnis des Trainingsprozesses
+  * **Shared Embedding** zwischen visuellen und textuellen Merkmalen („visuelle Wörter“)
+- Ergänzung um Positionsdaten („Wo befindet sich der Patch auf der Seite“) erforderlich
+  * (implizite) Zeilenführung, Layoutverständnis, Lesereihenfolge
+  * wiederum in Form von Vektoren
+
+---
+
+# Decoding-Strategie
+
+- Textgenerierung auf Basis des Sprachmodells **und** der visuellen Informationen
+  * multimodale Inferenz: `\(P(y_t|y_{y<t}, z_{vis})\)` 
+    + gesamte Bildinformation zur Verfügung (*Cross-Attention*)
+    + direkte Einbindung des „Sprachwissens“ (LLM) zur Auflösung visueller Ambiguitäten
+    + (im Gegensatz zur Sequenzklassifikation)
+- im Training: Nutzung der korrekten „nächsten“ Zeichen bzw. Wörter zur Anpassung der internen Wahrscheinlichkeiten (sog. *Teacher Forcing*)
+- Problem: Layout-Information typischerweise verloren (implizites Layoutwissen!)
 
 ---
 
