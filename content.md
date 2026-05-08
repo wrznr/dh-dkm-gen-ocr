@@ -539,6 +539,11 @@ Paradigmenwechsel: Von der Sequenz zum Transformer
   * semantische Filterung: nur relevante Merkmale (Kanten, Bögen, Texturen) aus dem Vektor
   * „Relevanz“ als Ergebnis des Trainingsprozesses
   * **Shared Embedding** zwischen visuellen und textuellen Merkmalen („visuelle Wörter“)
+
+---
+
+# ViT-Architektur
+
 - Ergänzung um Positionsdaten („Wo befindet sich der Patch auf der Seite“) erforderlich
   * (implizite) Zeilenführung, Layoutverständnis, Lesereihenfolge
   * wiederum in Form von Vektoren
